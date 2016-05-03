@@ -160,6 +160,12 @@
   background-color: transparent !important;
 }
 
+/* Nav bar specific stuff */
+/* Make sure the tab curve flows properly */
+#nav-bar {
+  margin-top: -2px !important;
+}
+
 /* End re-edit devedtion.css to default theme values */
 
 
@@ -168,8 +174,6 @@
 .tabbrowser-tab::before {
   background: none !important;
 }
-
-
 
 
 /* Begin Tab Background customizations */
@@ -216,6 +220,6 @@
     !important;
 }
 
-/* End customizing selected tab */
+/* End customizing tab */
 
 

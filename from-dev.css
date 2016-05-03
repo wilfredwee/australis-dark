@@ -186,7 +186,6 @@
 }
 
 /* Customizing selected tab, start and end. Inline SVG from chrome://browser/skin/tabbrowser/tab-selected-start.svg (and end) */
-/* TODO: Deal with Retina case */
 .tab-background-start[visuallyselected=true]:-moz-locale-dir(ltr)::before,
 .tab-background-end[visuallyselected=true]:-moz-locale-dir(rtl)::before {
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' xmlns:svg='http://www.w3.org/2000/svg' width='30px' height='31px' preserveAspectRatio='none'><defs><svg:clipPath id='tab-curve-clip-path-start' clipPathUnits='objectBoundingBox'><svg:path d='m 1,0.0625 0.05,0 0,0.938 -1,0 0,-0.028 C 0.32082458,0.95840561 0.4353096,0.81970962 0.48499998,0.5625 0.51819998,0.3905 0.535,0.0659 1,0.0625 z'/></svg:clipPath><svg:clipPath id='tab-curve-clip-path-end' clipPathUnits='objectBoundingBox'><svg:path d='m 0,0.0625 -0.05,0 0,0.938 1,0 0,-0.028 C 0.67917542,0.95840561 0.56569036,0.81970962 0.51599998,0.5625 0.48279998,0.3905 0.465,0.0659 0,0.0625 z'/></svg:clipPath><svg:clipPath id='tab-hover-clip-path' clipPathUnits='objectBoundingBox'><svg:path d='M 0,0.2 0,1 1,1, 1,0.2 z'/></svg:clipPath></defs><foreignObject width='30' height='31' clip-path='url(%23tab-curve-clip-path-start)'><div id='tab-background-fill' style='background-color:rgb(57, 66, 77);background-repeat:no-repeat;height:100%;width:100%;' xmlns='http://www.w3.org/1999/xhtml'></div></foreignObject></svg>")
@@ -203,7 +202,6 @@
 /* Background hover tab. PNG sourced from: chrome://browser/skin/tabbrowser/tab-background-start.png (middle and end) */
 /* png filled with 100% opacity and according to Dev Edition color scheme */
 /* Note that the end-tab png may be 1px below and require manipulation */
-/* TODO: Deal with Retina case */
 .tabbrowser-tab:hover > .tab-stack > .tab-background:not([visuallyselected=true]),
 .tabs-newtab-button:hover {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAfCAYAAADwbH0HAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAAEISURBVEhL5ZdBDoIwFETdCMJJOIS38xAcyqu4dI8zOiaNfuC3/eDCSV5CpDOTfhqChy3Vdv0ALhZaEieEPsuaUzeCG64nCy2PEQJZek0L5pClXsemPS/t8BPZ6qTSu1Uwh6zlKiklspcJAUPOeFMUkS+Y3QfJQjH5wk5HK9CLYvIEY/GI3ygqTzDy7WMGelFUnmrHTBTlF0zVYyaK8wum6jETxfkF058VRxwsojifYAg5WESRPsEQMmaiSJ9g+E1x1PMlilwXFoc9X6LYdUXulih2WVgYului6GVF75Yoel6l31RrKP5buMnx8qM8vJSo5iX84PoXEMGuZSk8OLuVpXDH5o1t6acHM4JdRO/Kwn4AAAAASUVORK5CYII=),
@@ -218,6 +216,26 @@
     url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAfCAYAAADEFbwbAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAAAcSURBVDhPY2Dn5KrBhkES/7HhUYlRiWEmwfUfAO7pyRndonEuAAAAAElFTkSuQmCC),
     url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAfCAYAAADwbH0HAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAAEISURBVEhL5ZdBDoIwFETdCMJJOIS38xAcyqu4dI8zOiaNfuC3/eDCSV5CpDOTfhqChy3Vdv0ALhZaEieEPsuaUzeCG64nCy2PEQJZek0L5pClXsemPS/t8BPZ6qTSu1Uwh6zlKiklspcJAUPOeFMUkS+Y3QfJQjH5wk5HK9CLYvIEY/GI3ygqTzDy7WMGelFUnmrHTBTlF0zVYyaK8wum6jETxfkF058VRxwsojifYAg5WESRPsEQMmaiSJ9g+E1x1PMlilwXFoc9X6LYdUXulih2WVgYului6GVF75Yoel6l31RrKP5buMnx8qM8vJSo5iX84PoXEMGuZSk8OLuVpXDH5o1t6acHM4JdRO/Kwn4AAAAASUVORK5CYII=)
     !important;
+}
+
+/* Background hover tab Retina case */
+@media (min-resolution: 1.1dppx) {
+  /* image preloading hack from shared/tabs.inc.css */
+  #tabbrowser-tabs::before {
+    background-image:
+      url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA+CAYAAAB3NHh5AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAAGrSURBVGhD7ZpLTsQwEEQTL3IFLsUduErOxjFYgQRIiM8VQkfKAtDTABl3dTvjlp4szcJd5XI8mWSGXr2OV9d/4Mo4TC2/MY7jm42HWQA0eQpbgEcbmzWPpv7BjdGUcTKxh9V4E6ZJ/C5sqz/bmD5tFH8mqdMmwTVIa5rE1iKlaRJak3SmSWRt1oMsTZHAqmx3amlSRpEO3BspTJM4L1JsbRLmgm3tJxvDU0ZxjoSnTKLc2H5phaaMwpwJTZkEeRN6M0KCFISlTGIUdMOqIjHulFI+bAy5jlGQiJCUSYiKblhRJESC3XW92yi/jlGMEHnKJEJJN+xdJELJZRm2g+vVRunBhULESFMmAWq6Yc8iAWqkj3BJQASylKl5BN2wV1FzOcqH9CggCEnK1DiKyzJs2/rFRvdtjc0DcU+ZmkbyYLimTE2jcU2ZGobi/RWFTRPg9sKNmmXBZWtToxR4fU1hsyx4XM/YKBNmuuq/dLFJUqocZDRxZu6Ms9KmSVtgfSy0yzhN1gzbi/XV+FdOLgJO1DLTNN0uyzIZZZ7nYp99q5+rcwSqnOYHqGH4BDwDHCkD/0hmAAAAAElFTkSuQmCC),
+      url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAA+CAYAAAAfx/pBAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAACCSURBVEhLzdZBCQAwEAPBE1j/dloDw8L9GpjPKsj8ubM0d4mxMBbGwlgYC2NhLIyFsTAWxsJYGAtjYSyMhbEwFsbCWBgLY2EsjIWxMBbGwlgYC2NhLIyFsTAWxsJYGAtjYSyMhbEwFsbCWBgLY2EsjIWxMBbGwlgYC2NhLDyzZbOZB4+FpJ9VRlJCAAAAAElFTkSuQmCC),
+      url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA+CAYAAAB3NHh5AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAAF/SURBVGhD7ZpbTsMwFESTfLCFbIo9sJWsjWXwxQcgISG2EO5Ucgngtnn4zp0QH+nIUqWqHo2TOEmbSqWiSm/ez3C3/AjYtu2HjeMMd8U5pAV8sTEX6Ja7IAV9MHMhligPwpYImpTl1Kot3TcbcxNfqySlW50qh2dYKIV3WCgDIyyUAZed3ARLK0G/YKe01XCwlJ/N3OQ8DIe1lJOhYCm/2pibmJehsNuFYaDdtXc8Wwwjol0YAmuTkTOEqHZhCDUwUTp913WfNuYmw5BOZLuQTg1MlgrzNvCSVKLbhVRq4ACpHCowTljvNuYmwZSGQruQRg0cJAX2o9hrUlBpF1KogQN1J+Jh+zXdUWoXunOowCrbyamuqLUL3cBm48nM/Wikbii2C11QuxRNLU7ki7I5Fkd1KSeLongZ+m0xlI/bqZvBMevxr1cvN6F+gsq5ilOrpuLG4paLSEFVHtes8SIp3NngF9ml/GYYhm4cR3hnPNpHuS/s3Yv8afifeCSa5gv/IxwfKBgH2gAAAABJRU5ErkJggg==)
+      !important;
+  }
+
+  .tabbrowser-tab:hover > .tab-stack > .tab-background:not([visuallyselected=true]),
+  .tabs-newtab-button:hover {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA+CAYAAAB3NHh5AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAAF/SURBVGhD7ZpbTsMwFESTfLCFbIo9sJWsjWXwxQcgISG2EO5Ucgngtnn4zp0QH+nIUqWqHo2TOEmbSqWiSm/ez3C3/AjYtu2HjeMMd8U5pAV8sTEX6Ja7IAV9MHMhligPwpYImpTl1Kot3TcbcxNfqySlW50qh2dYKIV3WCgDIyyUAZed3ARLK0G/YKe01XCwlJ/N3OQ8DIe1lJOhYCm/2pibmJehsNuFYaDdtXc8Wwwjol0YAmuTkTOEqHZhCDUwUTp913WfNuYmw5BOZLuQTg1MlgrzNvCSVKLbhVRq4ACpHCowTljvNuYmwZSGQruQRg0cJAX2o9hrUlBpF1KogQN1J+Jh+zXdUWoXunOowCrbyamuqLUL3cBm48nM/Wikbii2C11QuxRNLU7ki7I5Fkd1KSeLongZ+m0xlI/bqZvBMevxr1cvN6F+gsq5ilOrpuLG4paLSEFVHtes8SIp3NngF9ml/GYYhm4cR3hnPNpHuS/s3Yv8afifeCSa5gv/IxwfKBgH2gAAAABJRU5ErkJggg==),
+                      url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAA+CAYAAAAfx/pBAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAACCSURBVEhLzdZBCQAwEAPBE1j/dloDw8L9GpjPKsj8ubM0d4mxMBbGwlgYC2NhLIyFsTAWxsJYGAtjYSyMhbEwFsbCWBgLY2EsjIWxMBbGwlgYC2NhLIyFsTAWxsJYGAtjYSyMhbEwFsbCWBgLY2EsjIWxMBbGwlgYC2NhLDyzZbOZB4+FpJ9VRlJCAAAAAElFTkSuQmCC),
+                      url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA+CAYAAAB3NHh5AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAAGrSURBVGhD7ZpLTsQwEEQTL3IFLsUduErOxjFYgQRIiM8VQkfKAtDTABl3dTvjlp4szcJd5XI8mWSGXr2OV9d/4Mo4TC2/MY7jm42HWQA0eQpbgEcbmzWPpv7BjdGUcTKxh9V4E6ZJ/C5sqz/bmD5tFH8mqdMmwTVIa5rE1iKlaRJak3SmSWRt1oMsTZHAqmx3amlSRpEO3BspTJM4L1JsbRLmgm3tJxvDU0ZxjoSnTKLc2H5phaaMwpwJTZkEeRN6M0KCFISlTGIUdMOqIjHulFI+bAy5jlGQiJCUSYiKblhRJESC3XW92yi/jlGMEHnKJEJJN+xdJELJZRm2g+vVRunBhULESFMmAWq6Yc8iAWqkj3BJQASylKl5BN2wV1FzOcqH9CggCEnK1DiKyzJs2/rFRvdtjc0DcU+ZmkbyYLimTE2jcU2ZGobi/RWFTRPg9sKNmmXBZWtToxR4fU1hsyx4XM/YKBNmuuq/dLFJUqocZDRxZu6Ms9KmSVtgfSy0yzhN1gzbi/XV+FdOLgJO1DLTNN0uyzIZZZ7nYp99q5+rcwSqnOYHqGH4BDwDHCkD/0hmAAAAAElFTkSuQmCC)
+                      !important;
+  }
 }
 
 /* End customizing tab */

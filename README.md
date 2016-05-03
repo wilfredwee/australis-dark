@@ -10,5 +10,3 @@ from-default.css is the original implementation and should be deprecated soon. I
 from-dev.css transforms the Dev Edition theme to Australis Dark. On Firefox Stable release, this addon needs to be installed and the Developer Edition theme needs to be enabled: https://addons.mozilla.org/en-US/firefox/addon/devedition-theme-enabler/
 
 Transforming from Dev Edition is better because we get the platform-specific css for free.
-
-**TODO:** Test on Linux.

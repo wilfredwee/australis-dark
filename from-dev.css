@@ -178,10 +178,20 @@
 
 /* Begin Tab Background customizations */
 
-/* Middle part of the tab. Only difference here is changing the linear-gradient to Firefox Dev Edition values */
+/* Remove bright tab strokes (doesn't apply to Win10) */
+.tab-background-start[visuallyselected=true]:-moz-locale-dir(ltr)::after,
+.tab-background-end[visuallyselected=true]:-moz-locale-dir(rtl)::after {
+  background-image: none !important;
+}
+
+.tab-background-end[visuallyselected=true]:-moz-locale-dir(ltr)::after,
+.tab-background-start[visuallyselected=true]:-moz-locale-dir(rtl)::after {
+  background-image: none !important;
+}
+
+/* Middle part of the tab. Only difference here is removing the bright tab stroke and changing the linear-gradient to Firefox Dev Edition values */
 .tab-background-middle[visuallyselected=true] {
-  background-image: url(chrome://browser/skin/tabbrowser/tab-active-middle.png),
-                    linear-gradient(transparent 2px, rgba(57,66,77,1) 2px, rgba(57,66,77,1)),
+  background-image: linear-gradient(transparent 2px, rgba(57,66,77,1) 2px, rgba(57,66,77,1)),
                     none !important;
 }
 
@@ -239,5 +249,3 @@
 }
 
 /* End customizing tab */
-
-

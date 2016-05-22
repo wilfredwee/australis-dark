@@ -20,7 +20,7 @@ Note that if you are using Firefox Nightly (aka Developer Edition) you just have
 
 1. Then enable this theme in Stylish by installing this theme from here: https://userstyles.org/styles/127404/firefox-australis-dark-dev-ed
 
-## Project Overview 
+## Project Overview
 There are 2 files in this project: `from-default.css` and `from-dev.css`
 
 `from-default.css` is the original implementation and should be deprecated soon. It transforms the default Firefox theme to Australis Dark.
@@ -31,6 +31,5 @@ Transforming from Dev Edition is better because we get the platform-specific css
 We achieve a colored curved tabs by overriding the default PNG/SVG files and create our own files with the appropriate color, and append it in the CSS using data URI.
 
 ## Known and Possible Issues
-1. The tab stroke looks a little weird on Linux (Tested on GNOME, GTK3)
-1. Tab curves may be not perfect on Retina screens. Would be great if someone could test it.
-1. Not tested on OSX. Would be great if someone could test it.
+1. Does not work well on Windows 7 when not maximized.
+2. Not tested on OS's other than: Windows 10, Arch Linux, OSX 10.11

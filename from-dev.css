@@ -91,15 +91,12 @@
 
 
 /* Re-edit devedtion.css to default theme values */
-/* .tab-background-start[selected]::after,
-.tab-background-start[selected]::before,
-.tab-background-start,
-.tab-background-end,
-.tab-background-end[selected]::after,
-.tab-background-end[selected]::before {
-  width: 0;
-} */
 
+
+.tabbrowser-tab::after,
+.tabbrowser-tab::before {
+  opacity: 0 !important;
+}
 
 .tab-background-middle {
   border-left: 15px solid transparent;

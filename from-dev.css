@@ -15,7 +15,8 @@
 
 :root[devtoolstheme="dark"] {
   /* Chrome */
-  --chrome-background-color: #272b35;
+  /* Use the old Dev Edition background color because it's darker and nicer */
+  --chrome-background-color: #1C2126;
   --chrome-color: #F5F7FA;
   --chrome-secondary-background-color: #393F4C;
   --chrome-navigator-toolbox-separator-color: rgba(0,0,0,.2);
@@ -120,7 +121,7 @@
 .tab-background-start[selected=true]::before,
 .tab-background-start,
 .tab-background-end,
-.tab-background-end[selected=trued]::after,
+.tab-background-end[selected=true]::after,
 .tab-background-end[selected=true]::before {
   width: 30px;
 }
